@@ -86,5 +86,14 @@ pressure_anomalies = df[
 print("\nPressure anomalies:")
 print(pressure_anomalies.head())
 
+#Convert units and normalize the values
+
+num_cols = df.select_dtypes(include = 'number').columns
+df_normalized = df.copy()
+df_normalized[num_cols] = (df[num_cols] - df[num_cols].min()) / (df[num_cols].max() - df[num_cols].min())
+
+df_normalized.head()
+
+
 
 
